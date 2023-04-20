@@ -102,6 +102,17 @@ public class Order implements Serializable {
 		return items;
 	}
 
+	public Double getTotal() {
+		//mesma coisa que um for normal só quis testar
+		//Exemplo for -> for (OrderItem x : items) { sum += x.getSubTotal(); }
+
+		double sum = items.stream()
+				.mapToDouble(o -> o.getSubTotal())
+				.sum();
+		
+		return sum;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
